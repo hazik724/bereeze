@@ -4,9 +4,9 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 
 const slides = [
-  "/hero1.jpg",
-  "/hero2.jpg",
-  "/hero3.jpg",
+  "/desktop1.jpg",
+  "/desktop2.jpg",
+  "/desktop3.jpg",
 ]
 
 export default function Hero() {

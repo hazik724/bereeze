@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { client } from "@/sanity/lib/client"
 import { jobsQuery } from "@/sanity/lib/queries"
 import JobCard from "@/components/JobCard"
