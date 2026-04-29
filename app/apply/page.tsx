@@ -1,82 +1,75 @@
 import ApplyGeneralForm from "@/components/GenralApplyForm"
-import { ShieldCheck, Globe, Users, FileText } from "lucide-react"
+import { ShieldCheck, Globe, Users, FileText, CheckCircle2 } from "lucide-react"
 
 export default function ApplyPage() {
   return (
-    <div className="min-h-screen bg-[#E8EDF2] text-[#0B1220]">
+    <div className="min-h-screen bg-[#E8EDF2] text-[#124170]">
 
       {/* BACKGROUND GRID */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.05] bg-[radial-gradient(#0B1220_1px,transparent_1px)] [background-size:18px_18px]" />
+      <div className="fixed inset-0 pointer-events-none opacity-[0.04] bg-[radial-gradient(#0B1220_1px,transparent_1px)] [background-size:20px_20px]" />
 
-      <div className="relative max-w-6xl mx-auto px-5 py-16">
+      <div className="relative max-w-5xl mx-auto px-5 py-20">
 
-        {/* HERO SECTION */}
-        <div className="text-center max-w-3xl mx-auto">
+        {/* ================= HERO (SHORT + POWERFUL) ================= */}
+        <div className="text-center max-w-2xl mx-auto">
 
-          <div className="inline-flex items-center gap-2 text-xs tracking-widest bg-[#0B1220] text-white px-4 py-1 rounded-full">
-            VERIFIED OVERSEAS APPLICATION SYSTEM
+          <div className="inline-flex items-center gap-2 text-xs tracking-[0.25em] bg-[#F77F00] text-white px-4 py-1 rounded-full">
+            VERIFIED OVERSEAS RECRUITMENT SYSTEM
           </div>
 
           <h1 className="text-4xl md:text-5xl font-semibold mt-6 leading-tight">
-            Start Your International Career Journey
+            Apply Once. Get Matched Globally.
           </h1>
 
-          <p className="text-[#0B1220]/70 mt-5 text-sm md:text-base leading-relaxed">
-            Submit your complete profile once and get matched with verified overseas job opportunities
-            across UAE, Saudi Arabia, Qatar, and Oman through our recruitment network.
+          <p className="text-[#0B1220]/70 mt-5 text-sm md:text-base">
+            Submit your complete profile and get connected with verified overseas employers
+            across Gulf countries through our structured recruitment pipeline.
           </p>
 
-          {/* TRUST BADGES */}
+          {/* TRUST ROW */}
           <div className="flex flex-wrap justify-center gap-3 mt-8 text-xs">
 
-            <div className="flex items-center gap-2 bg-white border border-[#0B1220]/10 px-3 py-1 rounded-full">
-              <ShieldCheck size={14} />
-              Verified Process
-            </div>
-
-            <div className="flex items-center gap-2 bg-white border border-[#0B1220]/10 px-3 py-1 rounded-full">
-              <Globe size={14} />
-              Gulf Recruitment Network
-            </div>
-
-            <div className="flex items-center gap-2 bg-white border border-[#0B1220]/10 px-3 py-1 rounded-full">
-              <Users size={14} />
-              10,000+ Placements
-            </div>
+            <Badge icon={<ShieldCheck size={14} />} text="Verified Process" />
+            <Badge icon={<Globe size={14} />} text="Gulf Network" />
+            <Badge icon={<Users size={14} />} text="10,000+ Placements" />
 
           </div>
+
         </div>
 
-        {/* PROCESS EXPLANATION */}
-        <div className="grid md:grid-cols-3 gap-6 mt-16">
+        {/* ================= PROCESS (FLOW STYLE - NOT BOXES) ================= */}
+        <div className="mt-16 space-y-6 ">
 
-          <Step
+          <FlowStep
             icon={<FileText size={18} />}
-            title="1. Submit Profile"
-            desc="Fill complete personal, passport, and experience details once."
+            title="Step 1 — Submit Complete Profile"
+            desc="Fill personal, passport, and experience details in one secure form."
           />
 
-          <Step
+          <FlowStep
             icon={<Users size={18} />}
-            title="2. Verification"
-            desc="Our team reviews your data for eligibility and job matching."
+            title="Step 2 — Verification & Screening"
+            desc="Our recruitment team verifies and evaluates your eligibility."
           />
 
-          <Step
+          <FlowStep
             icon={<Globe size={18} />}
-            title="3. Job Matching"
-            desc="We connect you with active overseas employer requirements."
+            title="Step 3 — Global Job Matching"
+            desc="We connect you directly with active overseas employer requirements."
           />
 
         </div>
 
-        {/* FORM SECTION */}
-        <div className="mt-16 bg-white border border-[#0B1220]/10 rounded-2xl p-6 md:p-10 shadow-sm">
+        {/* ================= FORM (CENTERPIECE) ================= */}
+        <div className="mt-14 bg-white border border-[#0B1220]/10 rounded-2xl shadow-md p-6 md:p-10">
 
           <div className="mb-8">
-            <h2 className="text-xl font-semibold">Complete Application Form</h2>
-            <p className="text-sm text-[#0B1220]/60 mt-1">
-              Please provide accurate information for faster processing and approval.
+            <h2 className="text-xl font-semibold">
+              Complete Application Form
+            </h2>
+
+            <p className="text-sm text-[#124170]/60 mt-1">
+              Ensure accuracy — your profile is directly sent to international recruiters.
             </p>
           </div>
 
@@ -84,9 +77,18 @@ export default function ApplyPage() {
 
         </div>
 
-        {/* FOOTER TRUST NOTE */}
-        <div className="text-center mt-14 text-xs text-[#0B1220]/50 tracking-widest">
-          YOUR DATA IS SECURE AND USED ONLY FOR VERIFIED RECRUITMENT PURPOSES
+        {/* ================= SECURITY FOOTER ================= */}
+        <div className="text-center mt-14">
+
+          <div className="inline-flex items-center gap-2 text-sm text-[#0B1220]/60">
+            <ShieldCheck size={16} />
+            Your data is encrypted and used only for verified recruitment purposes
+          </div>
+
+          <p className="text-[11px] text-[#0B1220]/40 mt-3 tracking-widest">
+            INTERNATIONAL COMPLIANCE • VERIFIED EMPLOYERS • SECURE PROCESSING
+          </p>
+
         </div>
 
       </div>
@@ -94,16 +96,32 @@ export default function ApplyPage() {
   )
 }
 
-/* STEP CARD */
-function Step({ icon, title, desc }: any) {
+/* ================= FLOW STEP ================= */
+function FlowStep({ icon, title, desc }: any) {
   return (
-    <div className="bg-white border border-[#0B1220]/10 rounded-xl p-5 hover:shadow-md transition">
-      <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0B1220] text-white mb-4">
+    <div className="flex gap-4 items-start bg-white border border-[#0B1220]/10 rounded-xl p-5 hover:shadow-md transition">
+
+      <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0B1220] text-white">
         {icon}
       </div>
 
-      <h3 className="font-semibold text-[#0B1220]">{title}</h3>
-      <p className="text-sm text-[#0B1220]/60 mt-2 leading-relaxed">{desc}</p>
+      <div>
+        <h3 className="font-semibold">{title}</h3>
+        <p className="text-sm text-[#0B1220]/60 mt-1 leading-relaxed">
+          {desc}
+        </p>
+      </div>
+
+    </div>
+  )
+}
+
+/* ================= BADGE ================= */
+function Badge({ icon, text }: any) {
+  return (
+    <div className="flex items-center gap-2 bg-white border border-[#0B1220]/10 px-3 py-1 rounded-full">
+      {icon}
+      {text}
     </div>
   )
 }
