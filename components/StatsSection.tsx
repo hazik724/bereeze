@@ -1,131 +1,102 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { TrendingUp, Globe, Users, Award } from "lucide-react"
+import { Globe, Users, Award, TrendingUp } from "lucide-react"
 
 const stats = [
-  {
-    value: "10+",
-    label: "Years of Experience",
-    icon: Award,
-    hint: "Industry credibility",
-  },
-  {
-    value: "25K+",
-    label: "Successful Placements",
-    icon: Users,
-    hint: "Verified outcomes",
-  },
-  {
-    value: "15K+",
-    label: "Visas Processed",
-    icon: TrendingUp,
-    hint: "End-to-end execution",
-  },
-  {
-    value: "12+",
-    label: "Partner Countries",
-    icon: Globe,
-    hint: "Global network",
-  },
+  { value: 10, suffix: "+", label: "Years of Experience", icon: Award },
+  { value: 25000, suffix: "+", label: "Successful Placements", icon: Users },
+  { value: 15000, suffix: "+", label: "Visas Processed", icon: TrendingUp },
+  { value: 12, suffix: "+", label: "Partner Countries", icon: Globe },
 ]
+
+function useCountUp(end: number, duration = 1200) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let start: number
+
+    const animate = (t: number) => {
+      if (!start) start = t
+      const progress = t - start
+      const percent = Math.min(progress / duration, 1)
+
+      setCount(Math.floor(percent * end))
+
+      if (progress < duration) {
+        requestAnimationFrame(animate)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [end, duration])
+
+  return count
+}
+
+function StatCard({
+  stat,
+}: {
+  stat: (typeof stats)[0]
+}) {
+  const Icon = stat.icon
+  const count = useCountUp(stat.value)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+      className="
+        bg-white
+        border border-[#124170]/10
+        rounded-2xl
+        p-6
+        text-center
+        hover:shadow-md
+        transition
+      "
+    >
+      <div className="w-10 h-10 mx-auto mb-4 rounded-lg bg-[#E8EDF2] flex items-center justify-center text-[#124170]">
+        <Icon size={18} />
+      </div>
+
+      <h3 className="text-3xl font-semibold text-[#124170]">
+        {count.toLocaleString()}
+        {stat.suffix}
+      </h3>
+
+      <p className="text-sm text-[#124170]/60 mt-2">
+        {stat.label}
+      </p>
+    </motion.div>
+  )
+}
 
 export default function StatsSection() {
   return (
-    <section className="w-full bg-[#E8EDF2] py-24 px-6 border-t border-[#0B1220]/10">
+    <section className="w-full bg-[#E8EDF2] py-28 px-6 border-t border-[#124170]/10">
+
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
         <div className="text-center mb-16">
-          <Badge className="bg-[#0B1220] text-white px-4 py-1 text-xs tracking-wide">
-            PERFORMANCE OVERVIEW
-          </Badge>
-
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#0B1220] mt-5 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#124170]">
             Trusted Global Manpower Network
           </h2>
 
-          <p className="text-sm md:text-base text-[#0B1220]/60 mt-3 max-w-2xl mx-auto leading-relaxed">
-            Delivering structured workforce solutions with verified outcomes, transparent processes,
-            and international compliance across partner countries.
+          <p className="text-sm md:text-base text-[#124170]/70 mt-3 max-w-2xl mx-auto">
+            Delivering structured workforce solutions with verified outcomes and international compliance.
           </p>
         </div>
 
-        {/* STATS GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-          {stats.map((stat, i) => {
-            const Icon = stat.icon
-
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                whileHover={{ y: -6 }}
-                className="group"
-              >
-                <Card className="
-                  bg-white/70 backdrop-blur-md
-                  border border-[#0B1220]/10
-                  shadow-sm hover:shadow-xl
-                  transition-all duration-300
-                  rounded-2xl
-                ">
-                  <CardContent className="p-6">
-
-                    {/* TOP ROW */}
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="
-                        w-11 h-11 rounded-xl
-                        flex items-center justify-center
-                        bg-[#0B1220] text-white
-                        group-hover:scale-105 transition
-                      ">
-                        <Icon size={18} />
-                      </div>
-
-                      <span className="text-[11px] text-[#0B1220]/50 tracking-wide">
-                        {stat.hint}
-                      </span>
-                    </div>
-
-                    {/* VALUE */}
-                    <div className="space-y-1">
-                      <h2 className="
-                        text-4xl font-semibold text-[#0B1220]
-                        tracking-tight
-                      ">
-                        {stat.value}
-                      </h2>
-
-                      <p className="text-sm text-[#0B1220]/60 leading-snug">
-                        {stat.label}
-                      </p>
-                    </div>
-
-                    {/* PROGRESS LINE (DECORATIVE TRUST ELEMENT) */}
-                    <div className="mt-6 h-[2px] w-full bg-[#0B1220]/10 overflow-hidden rounded-full">
-                      <div className="h-full w-1/2 bg-[#0B1220] group-hover:w-3/4 transition-all duration-500" />
-                    </div>
-
-                  </CardContent>
-                </Card>
-              </motion.div>
-            )
-          })}
-
-        </div>
-
-        {/* FOOTER TRUST LINE */}
-        <div className="mt-16 text-center">
-          <p className="text-xs text-[#0B1220]/50 tracking-wide">
-            Verified institutional metrics • Updated in real time • Compliance-driven reporting
-          </p>
+        {/* GRID */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, i) => (
+            <StatCard key={i} stat={stat} />
+          ))}
         </div>
 
       </div>

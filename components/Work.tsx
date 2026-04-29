@@ -1,8 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FileText, Search, ClipboardCheck, Plane, Briefcase } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import {
+  FileText,
+  Search,
+  ClipboardCheck,
+  Plane,
+  Briefcase,
+} from "lucide-react"
 
 const steps = [
   {
@@ -34,55 +39,97 @@ const steps = [
 
 export default function HowWeWork() {
   return (
-    <section className="w-full bg-white py-24 px-6">
-      <div className="max-w-4xl mx-auto text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-semibold text-[#0B1220]">
-          How We Work
+    <section className="w-full bg-white py-28 px-6">
+
+      {/* HEADER */}
+      <div className="max-w-4xl mx-auto text-center mb-20">
+
+        <h2 className="text-3xl md:text-4xl font-semibold text-[#124170]">
+          How Our Recruitment Pipeline Works
         </h2>
 
-        <p className="text-gray-500 mt-4 text-sm md:text-base">
-          A transparent and structured recruitment process designed to ensure safety, trust, and success.
+        <p className="text-[#124170]/60 mt-4 text-sm md:text-base">
+          A structured end-to-end system ensuring transparency, safety, and successful overseas deployment.
         </p>
+
       </div>
 
-      <div className="max-w-3xl mx-auto relative">
-        <div className="absolute left-6 top-0 h-full w-px bg-gray-200" />
+      {/* TIMELINE */}
+      <div className="max-w-4xl mx-auto relative">
 
-        <div className="space-y-10">
+        {/* MAIN LINE */}
+        <div className="absolute left-6 top-0 h-full w-[2px] bg-[#E8EDF2]" />
+
+        <div className="space-y-12">
+
           {steps.map((step, i) => {
             const Icon = step.icon
 
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: i * 0.08 }}
-                className="relative pl-16"
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="relative pl-20 group"
               >
-                <div className="absolute left-4 top-1.5 w-3.5 h-3.5 rounded-full bg-[#0B1220]" />
 
-                <div className="absolute left-10 top-0">
-                  <div className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 bg-white shadow-sm">
-                    <Icon className="text-[#0B1220]" size={18} />
-                  </div>
+                {/* STEP NODE */}
+                <div className="
+                  absolute left-5 top-2
+                  w-3.5 h-3.5 rounded-full
+                  bg-[#F77F00]
+                  shadow-[0_0_10px_rgba(247,127,0,0.4)]
+                " />
+
+                {/* ICON BOX */}
+                <div className="
+                  absolute left-10 top-0
+                  w-11 h-11
+                  rounded-xl
+                  bg-[#E8EDF2]
+                  flex items-center justify-center
+                  text-[#124170]
+                  group-hover:scale-105 transition
+                ">
+                  <Icon size={18} />
                 </div>
 
-                <Card className="p-5 border border-gray-100 shadow-sm rounded-lg hover:shadow-md transition-all duration-300">
-                  <h3 className="text-[#0B1220] font-semibold text-lg">
+                {/* CARD */}
+                <div className="
+                  bg-white
+                  border border-[#124170]/10
+                  rounded-2xl
+                  p-6
+                  shadow-sm
+                  hover:shadow-md
+                  transition
+                ">
+
+                  {/* STEP NUMBER */}
+                  <div className="text-xs text-[#124170]/40 tracking-widest mb-2">
+                    STEP {String(i + 1).padStart(2, "0")}
+                  </div>
+
+                  <h3 className="text-lg font-semibold text-[#124170]">
                     {step.title}
                   </h3>
 
-                  <p className="text-gray-500 text-sm mt-2 leading-relaxed">
+                  <p className="text-sm text-[#124170]/60 mt-2 leading-relaxed">
                     {step.desc}
                   </p>
-                </Card>
+
+                </div>
+
               </motion.div>
             )
           })}
+
         </div>
+
       </div>
+
     </section>
   )
 }

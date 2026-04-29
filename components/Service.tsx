@@ -9,132 +9,138 @@ import {
   Globe,
   Users,
 } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 
 const services = [
   {
     icon: Briefcase,
     title: "Manpower Recruitment",
-    desc: "Structured workforce deployment for skilled and unskilled labor across international markets.",
-    tag: "Recruitment",
+    desc: "Skilled & unskilled workforce deployment across Gulf countries.",
   },
   {
     icon: FileText,
     title: "Visa Processing",
-    desc: "End-to-end documentation, compliance handling, and embassy coordination services.",
-    tag: "Documentation",
+    desc: "End-to-end documentation and embassy coordination.",
   },
   {
     icon: Plane,
     title: "Travel Arrangements",
-    desc: "End-to-end relocation support including ticketing, scheduling, and onboarding logistics.",
-    tag: "Logistics",
+    desc: "Flight booking, relocation, onboarding support.",
   },
   {
     icon: ShieldCheck,
     title: "Work Permits",
-    desc: "Legal authorization processing with full regulatory compliance and verification.",
-    tag: "Compliance",
+    desc: "Legal authorization with full compliance handling.",
   },
   {
     icon: Globe,
     title: "International Hiring",
-    desc: "Connecting verified global employers with pre-screened, qualified candidates.",
-    tag: "Global HR",
+    desc: "Global employers matched with verified candidates.",
   },
   {
     icon: Users,
     title: "Candidate Screening",
-    desc: "Multi-layer skill testing, background checks, and qualification validation.",
-    tag: "Verification",
+    desc: "Skill testing, background checks, validation system.",
   },
 ]
 
 export default function ServicesSection() {
   return (
-    <section className="w-full bg-[#E8EDF2] py-28 px-6 border-t border-[#0B1220]/10">
-      <div className="max-w-6xl mx-auto">
+    <section className="w-full bg-[#E8EDF2] py-28 px-6 border-t border-[#124170]/10">
 
-        {/* HEADER */}
-        <div className="text-center mb-16">
-          <Badge className="bg-[#0B1220] text-white px-4 py-1 text-xs tracking-widest">
-            CORE OPERATIONS
-          </Badge>
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-start">
 
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#0B1220] mt-6 tracking-tight">
-            Our Professional Services
+        {/* LEFT SIDE (STORY / BRAND VALUE) */}
+        <div>
+
+          <h2 className="text-4xl md:text-5xl font-semibold text-[#124170] leading-tight">
+            End-to-End <br />
+            Recruitment Infrastructure
           </h2>
 
-          <p className="text-[#0B1220]/60 mt-4 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            End-to-end manpower infrastructure designed for global recruitment,
-            compliance execution, and enterprise-grade workforce deployment systems.
+          <p className="mt-6 text-[#124170]/70 text-base leading-relaxed">
+            We don’t just provide services — we manage the entire overseas
+            employment lifecycle from recruitment to deployment.
           </p>
+
+          {/* TRUST POINTS */}
+          <div className="mt-10 space-y-4 text-sm text-[#124170]/70">
+
+            <div className="flex gap-2 items-center">
+              <span className="w-2 h-2 bg-[#F77F00] rounded-full" />
+              Verified international hiring system
+            </div>
+
+            <div className="flex gap-2 items-center">
+              <span className="w-2 h-2 bg-[#F77F00] rounded-full" />
+              Full visa + documentation support
+            </div>
+
+            <div className="flex gap-2 items-center">
+              <span className="w-2 h-2 bg-[#F77F00] rounded-full" />
+              Direct employer connections (no middle fraud)
+            </div>
+
+          </div>
+
+          {/* CTA */}
+          <button className="mt-10 px-6 py-3 bg-[#124170] text-white rounded-full hover:bg-[#0f345a] transition">
+            Explore Opportunities
+          </button>
+
         </div>
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* RIGHT SIDE (INTERACTIVE LIST - NOT CARDS) */}
+        <div className="space-y-4">
 
-          {services.map((service, i) => {
-            const Icon = service.icon
+          {services.map((s, i) => {
+            const Icon = s.icon
 
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.06 }}
-                whileHover={{ y: -6 }}
-                className="group"
-              >
-                <Card className="
-                  h-full rounded-2xl
-                  bg-white/70 backdrop-blur-md
-                  border border-[#0B1220]/10
-                  shadow-sm hover:shadow-xl
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                className="
+                  group flex gap-4 p-5 rounded-xl
+                  bg-white border border-[#124170]/10
+                  hover:border-[#F77F00]/40
+                  hover:shadow-md
                   transition-all duration-300
+                  cursor-pointer
+                "
+              >
+
+                {/* ICON */}
+                <div className="
+                  w-10 h-10 rounded-lg
+                  bg-[#E8EDF2]
+                  flex items-center justify-center
+                  text-[#124170]
+                  group-hover:text-[#F77F00]
+                  transition
                 ">
-                  <CardContent className="p-7">
+                  <Icon size={18} />
+                </div>
 
-                    {/* TOP ROW */}
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="
-                        w-12 h-12 rounded-xl
-                        bg-[#0B1220] text-white
-                        flex items-center justify-center
-                        group-hover:scale-105 transition
-                      ">
-                        <Icon size={20} />
-                      </div>
+                {/* TEXT */}
+                <div>
+                  <h3 className="text-[#124170] font-medium">
+                    {s.title}
+                  </h3>
 
-                      <Badge className="text-[10px] bg-[#0B1220]/5 text-[#0B1220]/70">
-                        {service.tag}
-                      </Badge>
-                    </div>
+                  <p className="text-sm text-[#124170]/60 mt-1">
+                    {s.desc}
+                  </p>
+                </div>
 
-                    {/* TITLE */}
-                    <h3 className="text-lg font-semibold text-[#0B1220] tracking-tight">
-                      {service.title}
-                    </h3>
-
-                    {/* DESC */}
-                    <p className="text-sm text-[#0B1220]/60 mt-3 leading-relaxed">
-                      {service.desc}
-                    </p>
-
-                    {/* FOOTER LINE (TRUST INDICATOR) */}
-                    <div className="mt-6 h-[2px] w-full bg-[#0B1220]/10 overflow-hidden rounded-full">
-                      <div className="h-full w-1/3 bg-[#0B1220] group-hover:w-2/3 transition-all duration-500" />
-                    </div>
-
-                  </CardContent>
-                </Card>
               </motion.div>
             )
           })}
 
         </div>
+
       </div>
     </section>
   )

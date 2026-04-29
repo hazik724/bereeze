@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
+import  Footer  from "@/components/Footer";
+import TextSlider from "@/components/TextSlider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,12 +49,12 @@ export default function RootLayout({
 
         {/* NAVBAR */}
         <Navbar />
-
+        <TextSlider/>
         {/* MAIN CONTENT */}
-        <main className="flex-1 pt-20">
+        <main className="flex-1 ">
           {children}
         </main>
-
+        <Footer/>
       </body>
     </html>
   )

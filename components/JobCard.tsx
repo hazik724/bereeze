@@ -13,9 +13,7 @@ interface Job {
   country: string
   salary?: string
   image?: any
-  slug: {
-    current: string
-  }
+  slug: { current: string }
 }
 
 export default function JobCard({ job }: { job: Job }) {
@@ -32,14 +30,14 @@ export default function JobCard({ job }: { job: Job }) {
         href={`/jobs/${job.slug.current}`}
         className="
           block overflow-hidden rounded-2xl
-          border border-[#0B1220]/10
-          bg-white/70 backdrop-blur-md
-          shadow-sm hover:shadow-xl
+          border border-[#124170]/10
+          bg-white
+          shadow-sm hover:shadow-lg
           transition-all duration-300
         "
       >
 
-        {/* IMAGE SECTION */}
+        {/* IMAGE */}
         <div className="relative h-48 w-full overflow-hidden bg-[#E8EDF2]">
 
           {job.image ? (
@@ -53,14 +51,14 @@ export default function JobCard({ job }: { job: Job }) {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <Briefcase className="text-[#0B1220]/30" size={26} />
+              <Briefcase className="text-[#124170]/20" size={26} />
             </div>
           )}
 
-          {/* TOP BADGE OVERLAY */}
+          {/* VERIFIED BADGE */}
           <div className="absolute top-3 left-3">
-            <Badge className="bg-[#0B1220] text-white text-[10px] tracking-widest px-3 py-1">
-              VERIFIED OPPORTUNITY
+            <Badge className="bg-[#124170] text-white text-[10px] tracking-widest px-3 py-1">
+              VERIFIED JOB
             </Badge>
           </div>
 
@@ -70,26 +68,26 @@ export default function JobCard({ job }: { job: Job }) {
         <div className="p-6">
 
           {/* TITLE */}
-          <h3 className="text-[#0B1220] font-semibold text-lg leading-snug tracking-tight group-hover:text-[#0B1220]/90">
+          <h3 className="text-[#124170] font-semibold text-lg leading-snug group-hover:text-[#124170]/90">
             {job.title}
           </h3>
 
-          {/* COMPANY ROW */}
-          <div className="flex items-center gap-2 mt-2 text-sm text-[#0B1220]/60">
+          {/* COMPANY */}
+          <div className="flex items-center gap-2 mt-2 text-sm text-[#124170]/60">
             <Building2 size={14} />
             <span>{job.company}</span>
-            <BadgeCheck size={14} className="text-green-500 ml-1" />
+            <BadgeCheck size={14} className="text-[#F77F00]" />
           </div>
 
-          {/* META GRID */}
+          {/* META */}
           <div className="flex flex-wrap gap-2 mt-4">
 
             <span className="
               flex items-center gap-1
               text-xs px-3 py-1 rounded-full
-              border border-[#0B1220]/10
+              border border-[#124170]/10
               bg-[#E8EDF2]
-              text-[#0B1220]/70
+              text-[#124170]/70
             ">
               <MapPin size={12} />
               {job.country}
@@ -98,7 +96,8 @@ export default function JobCard({ job }: { job: Job }) {
             {job.salary && (
               <span className="
                 text-xs px-3 py-1 rounded-full
-                bg-[#0B1220] text-white
+                bg-[#124170]
+                text-white
               ">
                 {job.salary}
               </span>
@@ -107,23 +106,23 @@ export default function JobCard({ job }: { job: Job }) {
           </div>
 
           {/* DIVIDER */}
-          <div className="my-5 h-[1px] bg-[#0B1220]/10" />
+          <div className="my-5 h-[1px] bg-[#124170]/10" />
 
-          {/* FOOTER ACTION ROW */}
+          {/* FOOTER */}
           <div className="flex items-center justify-between">
 
-            <span className="text-xs text-[#0B1220]/40 tracking-wide">
-              International deployment listing
+            <span className="text-xs text-[#124170]/40 tracking-wide">
+              International verified recruitment listing
             </span>
 
             <div className="
               flex items-center gap-2
               text-sm font-medium
-              text-[#0B1220]
+              text-[#124170]
               group-hover:gap-3 transition-all
             ">
               Apply Now
-              <ArrowRight size={16} />
+              <ArrowRight size={16} className="text-[#F77F00]" />
             </div>
 
           </div>
