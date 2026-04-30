@@ -147,7 +147,7 @@ export default async function JobDetailPage({
               </div>
 
               {/* TRUST SYSTEM PANEL */}
-              <div className="bg-[#0B1220] text-white rounded-2xl p-6">
+              <div className="bg-[#F77F00] text-white rounded-2xl p-6">
 
                 <h4 className="font-medium text-sm">
                   Verification System

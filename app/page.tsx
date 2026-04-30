@@ -8,15 +8,20 @@ import Jobs  from "@/components/JobDisplay";
 import JobPipelineSection from "@/components/pipeline";
 import NewHero from "@/components/newHero"
 import TextSlider from "@/components/TextSlider";
+import HeadlineSlider from "@/components/headline";
+import ServicesBlock from "@/components/services";
 export default async function HomePage(
   ){
   return (
     <div>
-       <TextSlider/>
+      <HeadlineSlider/>
       <Hero/>
+       <TextSlider/>
       <JobPipelineSection/>
-      <NewHero/>
+      <ServicesBlock/>
+      <HeadlineSlider/>
       <Jobs/>
+      <NewHero/>
       <Service/>
       <Test/>
       <Stats/>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import Image from "next/image"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,13 +49,18 @@ export default function Navbar() {
         >
 
           {/* LOGO */}
-          <Link
-            href="#"
-            className="text-xl font-semibold tracking-wide text-[#124170]"
-          >
-            BAREEZE{" "}
-            <span className="text-[#F77F00]">MANPOWER</span>
-          </Link>
+<Link href="/" className="flex items-center gap-3">
+
+<Image
+  src="/logo.png"
+  alt="Bareeze Manpower Logo"
+  width={100}
+  height={40}
+  priority
+  className="h-15 w-auto "
+/>
+
+</Link>
 
           {/* DESKTOP NAV */}
           <nav className="hidden md:flex items-center gap-7">

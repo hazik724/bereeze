@@ -52,7 +52,7 @@ export default function CountriesPage() {
         {/* ================= HERO ================= */}
         <div className="text-center mb-20">
 
-          <Badge className="bg-[#124170] text-white px-4 py-1 text-xs tracking-[0.25em]">
+          <Badge className="bg-[#F77F00] text-white px-4 py-1 text-xs tracking-[0.25em]">
             GLOBAL DEPLOYMENT NETWORK
           </Badge>
 

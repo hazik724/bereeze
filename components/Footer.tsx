@@ -87,17 +87,20 @@ export default function Footer() {
 
           <div className="flex items-center gap-2">
             <Phone size={16} className="text-[#F77F00]" />
-            +92 317 3890580
+            +92 61 4588222
+            <Phone size={16} className="text-[#F77F00]" />
+            +92 320 1110201
           </div>
+          
 
           <div className="flex items-center gap-2">
             <Mail size={16} className="text-[#F77F00]" />
-            info@bareezemanpower.com
+            bareezemanpower@hotmail.com
           </div>
 
           <div className="flex items-center gap-2">
             <MapPin size={16} className="text-[#F77F00]" />
-            Pakistan • Gulf Operations
+           22-B Babar Commercial Center Kutchery Road Multan Pakistan • Gulf Operations
           </div>
 
         </div>

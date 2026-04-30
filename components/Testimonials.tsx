@@ -33,7 +33,7 @@ export default function Testimonials() {
       {/* HEADER */}
       <div className="max-w-5xl mx-auto text-center mb-16">
 
-        <Badge className="bg-[#124170] text-white px-4 py-1 text-xs tracking-widest">
+        <Badge className="bg-[#F77F00] text-white px-4 py-1 text-xs tracking-widest">
           VERIFIED OUTCOMES
         </Badge>
 

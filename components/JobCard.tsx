@@ -50,7 +50,7 @@ export default function JobCard({ job }: any) {
           {/* TOP STRIP (URGENCY / STATUS) */}
           <div className="absolute top-3 left-3 flex gap-2">
 
-            <Badge className="bg-[#124170] text-white text-[10px] tracking-widest px-3 py-1">
+            <Badge className="bg-[#F77F00] text-white text-[10px] tracking-widest px-3 py-1">
               VERIFIED OPPORTUNITY
             </Badge>
 
